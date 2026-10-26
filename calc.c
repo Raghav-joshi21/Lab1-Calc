@@ -1,7 +1,7 @@
 // Raghav Joshi 251ADB004
 // https://github.com/Raghav-joshi21/calc-lab-home.git
 // Compile with: gcc -O2 -Wall -Wextra -std=c17 -o calc calc.c -lm
-// Resources used: https://chatgpt.com/share/6adfba14-39d4-83ed-8011-1f56524ba02a, K&R, The C Programming Language 2nd ed, section 4.3,chapter 7, or man 3 fopen, https://en.wikipedia.org/wiki/Shunting_yard_algorithm, Theodore Norvell, Parsing Expressions by Recursive Descent (online) details in comments where you used them>
+// Resources used: https://chatgpt.com/share/6adfba14-39d4-83ed-8011-1f56524ba02a, K&R, The C Programming Language 2nd ed, section 4.3,chapter 7, or man 3 fopen, https://en.wikipedia.org/wiki/Shunting_yard_algorithm, Theodore Norvell, Parsing Expressions by Recursive Descent (online)>
 
 #define _POSIX_C_SOURCE 200809L
 #include <ctype.h>
@@ -41,7 +41,6 @@ typedef struct {
 } Scanner; //scanner holds the whole file and one offset into it and how postions are tracked 'at' is a offset from start of the file
 
 static int is_digit(char c) { return c>= '0' && c <= '9'; }
-//holds out one token a"\n is reported but not consumed 
 static void read_number(Scanner *sc, Token *t)
 {
     char *s = sc->text;
@@ -70,7 +69,6 @@ static void read_number(Scanner *sc, Token *t)
     t->is_real = 1;
 }
 // Hands out one token. A '\n' is reported but NOT consumed, because the line driver needs to see it to know where the next line begins.
-
 //AI(chatgpt): prompt: i forgot to add this line and ask this to chatgpt with error getting this error tried fixing but stuck
 static Token pull_token(Scanner *sc)
 {
